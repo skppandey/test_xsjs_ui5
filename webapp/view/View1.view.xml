@@ -1,0 +1,72 @@
+<mvc:View controllerName="ztest_cloud.ztest_cloud.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<HBox>
+						<VBox>
+							<Label id="Label" text="Input ID"/>
+							<Input id="idInput" required="true" width="200px"/>
+							<Button text="AJAX call" press="Read"/>
+						</VBox>
+						<Table mode="MultiSelect" selectionChange="selectAll" id="idEmployeTable" inset="false" items="{d_model>/data}">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Emnployee Table" level="H2"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Employee ID"/>
+							</Column>
+							<Column>
+								<Text text="Employee Name"/>
+							</Column>
+							<Column>
+								<Text text="Company"/>
+							</Column>
+							<Column>
+								<Text text="City"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active" press="onObjectListItemPress">
+								<cells>
+									<!--<Text text="{q_model>NAME}"/>-->
+									<Input value="{d_model>ID}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oID"/>
+									<!--<Text text="{q_model>LOCATION}"/>-->
+									<Input value="{d_model>Name}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oName"/>
+									<!--<Text text="{q_model>COMPANY}"/>-->
+									<Input value="{d_model>Company}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oCompany"/>
+									<Input value="{d_model>City}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oCity"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					</HBox>
+						<VBox>
+							<l:Grid id="gridId">
+								<f:SimpleForm id="SimpleFormChange354">
+									<f:content>
+										<Label text="Employee ID"/>
+										<Input value="{d_model>/ID}" id="fID"></Input>
+										<Label text="Employee Name"/>
+										<Input value="{d_model>/NAME}" id="fName"></Input>
+										<Label text="Company"/>
+										<Input value="{d_model>/COMPANY}" id="fCompany" liveChange="onChange"></Input>
+										<Label text="City"/>
+										<Input value="{d_model>/CITY}" id="fCity" liveChange="onChange"></Input>
+									</f:content>
+								</f:SimpleForm>
+							</l:Grid>
+							<Button id="onCreate" text="Create" press="onCreate"/>
+								<Button id="onPush" text="Push " press="onPush"/>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
