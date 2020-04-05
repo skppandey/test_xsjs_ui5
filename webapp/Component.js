@@ -25,6 +25,9 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+			var oModel = new sap.ui.model.odata.ODataModel("/ztest2/test.xsodata");
+			sap.ui.getCore().setModel(oModel, "oModel");
+            	// this.getOwnerComponent().setModel(oModel);
 		}
 	});
 });

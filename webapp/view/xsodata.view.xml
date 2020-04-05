@@ -1,0 +1,48 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ztest_cloud.ztest_cloud.controller.xsodata"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" displayBlock="true" height="100%">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<Button text="Goto View1" press="onView1Press"/>
+					<Button text="xsodata call" press="onGet"/>
+					<Table mode="MultiSelect" selectionChange="selectAll" id="idEmployeTable" inset="false" items="{q_model>/data}">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Emnployee Table" level="H2"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Employee ID"/>
+							</Column>
+							<Column>
+								<Text text="Employee Name"/>
+							</Column>
+							<Column>
+								<Text text="Company"/>
+							</Column>
+							<Column>
+								<Text text="City"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active" press="onObjectListItemPress">
+								<cells>
+									<!--<Text text="{q_model>NAME}"/>-->
+									<Input value="{q_model>ID}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oID"/>
+									<!--<Text text="{q_model>LOCATION}"/>-->
+									<Input value="{q_model>NAME}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oName"/>
+									<!--<Text text="{q_model>COMPANY}"/>-->
+									<Input value="{q_model>COMPANY}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oCompany"/>
+									<Input value="{q_model>CITY}" type="{Text}" description="{UoM}" fieldWidth="{60%}" id="oCity"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

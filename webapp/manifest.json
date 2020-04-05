@@ -30,7 +30,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -77,15 +76,27 @@
 			"routes": [{
 				"name": "RouteView1",
 				"pattern": "RouteView1",
-				"target": ["TargetView1"]
+				"target": [
+					"TargetView1"
+				]
+			}, {
+				"name": "Routexsodata",
+				"pattern": "Routexsodata",
+				"target": [
+					"Targetxsodata"
+				]
 			}],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "View1",
 					"viewName": "View1"
+				},
+				"Targetxsodata": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewName": "xsodata"
 				}
 			}
 		}

@@ -72,6 +72,9 @@ sap.ui.define([
 				}
 
 			});
+		},
+		onxs:function(){
+			 this.getOwnerComponent().getRouter().navTo("Routexsodata");
 		}
 	});
 });
