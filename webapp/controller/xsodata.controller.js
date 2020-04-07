@@ -34,6 +34,42 @@ sap.ui.define([
 				error: function (oError) { //"do something" 
 				}
 			});
+		},
+		onDetails:function(){
+			var oModel = this._getModel();
+			var oTable = this.getView().byId("idEmployeTable");
+			var contexts = oTable.getSelectedContexts("q_model>/data");
+			if (contexts.length == 0) {
+				sap.m.MessageBox.error("Please Select atleast one entry");
+			} else if (contexts.length > 1) {
+				sap.m.MessageBox.error("Please select only one entry");
+			} else {
+				var items = contexts.map(function (c) {
+					return c.getObject();
+				});
+			};
+			var oEntity={};
+			oEntity.ID = items[0].ID;
+			oEntity.NAME = items[0].NAME;
+			oEntity.COMPANY = items[0].COMPANY;
+			oEntity.CITY = items[0].CITY;
+			
+			this.getView().getModel("q_model").setProperty("/formdata", oEntity);
+		},
+		onCreate:function(){
+			var oModel = this._getModel();
+			var oEntity={};
+			oEntity.ID = this.getView().byId("fId").getValue();
+			oEntity.NAME = this.getView().byId("fName").getValue();
+			oEntity.COMPANY = this.getView().byId("fLocation").getValue();
+			oEntity.CITY =this.getView().byId("fCompany").getValue();
+					oModel.create("/Employee", oEntity, {
+							success: function (oData) { //"do something"  
+								// sap.m.MessageBox.success("Successfully Created");
+							},
+							error: function (oError) { //"do something" 
+							}
+						});
 		}
 
 		/**
