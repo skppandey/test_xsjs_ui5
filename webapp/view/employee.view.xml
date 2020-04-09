@@ -1,0 +1,25 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ztest_cloud.ztest_cloud.controller.employee"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" displayBlock="true" height="100%">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<l:Grid id="gridId">
+						<f:SimpleForm id="SimpleFormChange354">
+							<f:content>
+								<Label text="Employee ID"/>
+								<Input value="{x_model>/data/ID}" id="fId"></Input>
+								<Label text="Employee Name"/>
+								<Input value="{x_model>/data/NAME}" id="fName"></Input>
+								<Label text="Location"/>
+								<Input value="{x_model>/data/COMPANY}" id="fLocation" liveChange="onChange"></Input>
+								<Label text="Company"/>
+								<Input value="{x_model>/data/CITY}" id="fCompany" liveChange="onChange"></Input>
+							</f:content>
+						</f:SimpleForm>
+					</l:Grid>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

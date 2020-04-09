@@ -25,6 +25,7 @@
 							</l:Grid>
 							<Button id="onDetails" text="Display Project Details" press="onDetails"/>
 							<Button id="onCreate" text="Create Employee Details" press="onCreate"/>
+							<Button id="onEmployee" text="Display Employee Details" press="onEmployee"/>
 						</VBox>
 						<Table mode="MultiSelect" selectionChange="selectAll" id="idEmployeTable" inset="false" items="{q_model>/data}">
 							<headerToolbar>

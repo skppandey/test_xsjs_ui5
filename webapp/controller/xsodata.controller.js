@@ -11,19 +11,19 @@ sap.ui.define([
 		 * @memberOf ztest_cloud.ztest_cloud.view.xsodata
 		 */
 		onInit: function () {
-			
+		
 		},
-		_getModel:function(){
+		_getModel: function () {
 			// return this.getOwnerComponent().getModel("oModel");
 			return sap.ui.getCore().getModel("oModel");
 		},
 		onView1Press: function () {
 			this.getOwnerComponent().getRouter().navTo("RouteView1");
 		},
-		onGet:function(){
+		onGet: function () {
 			var that = this;
 			var oModel = that._getModel();
-		oModel.read("/Employee", {
+			oModel.read("/Employee", {
 				success: function (oData) { //"do something"  
 					var t = new sap.ui.model.json.JSONModel();
 					// t.setData(oData);
@@ -35,7 +35,7 @@ sap.ui.define([
 				}
 			});
 		},
-		onDetails:function(){
+		onDetails: function () {
 			var oModel = this._getModel();
 			var oTable = this.getView().byId("idEmployeTable");
 			var contexts = oTable.getSelectedContexts("q_model>/data");
@@ -48,29 +48,47 @@ sap.ui.define([
 					return c.getObject();
 				});
 			};
-			var oEntity={};
+			var oEntity = {};
 			oEntity.ID = items[0].ID;
 			oEntity.NAME = items[0].NAME;
 			oEntity.COMPANY = items[0].COMPANY;
 			oEntity.CITY = items[0].CITY;
-			
+
 			this.getView().getModel("q_model").setProperty("/formdata", oEntity);
 		},
-		onCreate:function(){
+		onCreate: function () {
 			var oModel = this._getModel();
-			var oEntity={};
+			var oEntity = {};
 			oEntity.ID = this.getView().byId("fId").getValue();
 			oEntity.NAME = this.getView().byId("fName").getValue();
 			oEntity.COMPANY = this.getView().byId("fLocation").getValue();
-			oEntity.CITY =this.getView().byId("fCompany").getValue();
-					oModel.create("/Employee", oEntity, {
-							success: function (oData) { //"do something"  
-								// sap.m.MessageBox.success("Successfully Created");
-							},
-							error: function (oError) { //"do something" 
-							}
-						});
-		}
+			oEntity.CITY = this.getView().byId("fCompany").getValue();
+			oModel.create("/Employee", oEntity, {
+				success: function (oData) { //"do something"  
+					// sap.m.MessageBox.success("Successfully Created");
+				},
+				error: function (oError) { //"do something" 
+				}
+			});
+		},
+		onEmployee: function () {
+			var oModel = this._getModel();
+			var oTable = this.getView().byId("idEmployeTable");
+			var contexts = oTable.getSelectedContexts("q_model>/data");
+			if (contexts.length == 0) {
+				sap.m.MessageBox.error("Please Select atleast one entry");
+			} else if (contexts.length > 1) {
+				sap.m.MessageBox.error("Please select only one entry");
+			} else {
+				var items = contexts.map(function (c) {
+					return c.getObject();
+				});
+			};
+			this.getOwnerComponent().getRouter().navTo("employee", {
+				employeeID: items[0].ID
+			});
+			// that.getOwnerComponent().getRouter().attachRoutePatternMatched(that._onObjectMatched, this);
+		},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

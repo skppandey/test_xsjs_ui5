@@ -59,9 +59,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -73,19 +75,30 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteView1",
-				"pattern": "RouteView1",
-				"target": [
-					"TargetView1"
-				]
-			}, {
-				"name": "Routexsodata",
-				"pattern": "Routexsodata",
-				"target": [
-					"Targetxsodata"
-				]
-			}],
+			"routes": [
+				{
+					"name": "RouteView1",
+					"pattern": "RouteView1",
+					"target": [
+						"TargetView1"
+					]
+				},
+				{
+					"name": "Routexsodata",
+					"pattern": "Routexsodata",
+					"target": [
+						"Targetxsodata"
+					]
+				},
+				{
+					"pattern": "employee/{employeeID}",
+					"name": "employee",
+					"target": [
+						"employee"
+						
+					]
+				}
+			],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
@@ -97,6 +110,11 @@
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "xsodata"
+				},
+				"employee": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewName": "employee"
 				}
 			}
 		}
